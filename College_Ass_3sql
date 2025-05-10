@@ -1,0 +1,30 @@
+--a)
+SELECT ground
+FROM match009
+WHERE Team1 = 'Australia'
+ORDER BY Ground ASC;
+
+SELECT ground
+FROM match009
+WHERE Team1 = 'Australia'
+ORDER BY Ground desc;
+
+--b)
+Select F_Name,L_Name from player009 where L_Name like 'S_n%';
+select * from player009;
+
+--c)
+select match_id from match009 where match_id=(select match_id from batting009 where player_id=(select player_id from player009 where
+F_Name ='Sachin' and L_Name='Tendulkar'));
+
+--d)
+SELECT * 
+FROM match009 
+WHERE match_id IN (
+    SELECT match_id 
+    FROM batting009 
+    WHERE player_id IN(
+        SELECT player_id 
+        FROM player009 
+        WHERE L_Name LIKE 'Dhoni'));
+        

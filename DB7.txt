@@ -1,0 +1,26 @@
+Assignment:7
+
+1)
+create view Sample009 as select p1.Player_Id,p1.F_Name,p1.L_Name,p1.Country,b1.N_Overs,b1.N_Wickets from player009 p1 , bowling009 b1
+where p1.player_id=b1.player_id and match_id='2755';
+
+2)
+ select F_Name,L_Name from Sample009 where N_Wickets>=2;
+
+3)
+create view sample081 as select Match_id,Team1,Team2,Ground,Match_date from match009;
+
+4)
+INSERT INTO Sample081(match_id, team1, team2, ground, match_date)VALUES('2907h','India','Australia','Mohali','27-aug-2008');
+
+5)
+delete from Sample081 where Match_Id='2907h';
+
+6)
+drop view Sample081;
+
+7)
+create unique index ABC on player009(Player_Id,L_Name,F_Name,Country desc,Year_Born);
+
+8)
+drop index ABC;

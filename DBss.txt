@@ -1,0 +1,85 @@
+ASSIGNMENT NO: PC – CS 692 / 09
+1)	Write a PL / SQL code block to calculate the area of a circle for a value of radius varying from 3 to 7. Store the radius and the corresponding values of calculated area in an empty table named AREAS with radius and area as attributes.
+2)	Write PL / SQL code to calculate sum of digits of a number.
+3)	Write PL / SQL code to calculate sum of natural series.
+4)	Write PL / SQL code for inverting a number 8975 to 5798.
+5)	Write PL/SQL code to find Factorial of first 10 Prime Numbers.
+
+set serveroutput on;
+Declare
+    num number := 2; 
+    count_n number := 0;
+    fact number := 1;
+    
+    function is_prime(n number) return boolean is
+        i number;
+    begin
+        if n < 2 then
+            return false;
+        END if;
+
+        For i in 2 .. TRUNC(Sqrt(n)) 
+        loop
+            if mod(n, i) = 0 then
+                return false;
+            END if;
+        END loop;
+
+        return true;
+    END;
+
+BEGIN
+    While count_n < 10 
+    loop
+        IF is_prime(num) then
+            fact:= 1; 
+            FOR i in 1 .. num 
+            loop
+                fact:=fact * i;
+            END loop;
+            DBMS_OUTPUT.PUT_LINE(num || ' Factorial is: ' || fact);
+            count_n:=count_n + 1; 
+        END if;
+        num := num + 1; 
+    END loop;
+END;
+/
+
+6)	Write PL/SQL code to find a user input number is Petersen Number or not.
+
+
+
+ASSIGNMENT NO: PC – CS 692 / 10
+Question: For a table Employee (Empno varchar(8), Salary number (10)), Write a PL/SQL code to create a Procedure and a Function that will find salary of a specific employee.
+
+	create or replace procedure findsalary (empnol in varchar2, salaryl out number) is salary2 number(10);
+    begin
+select salary into salary2 from employee where empno = empnol;
+salaryl:=salary2;
+     end; 
+
+   	     set serveroutput on;
+     declare
+            	empnol varchar2(8);
+        	salaryl varchar2(10);
+     begin
+empnol:=&empnol;
+findsalary(empnol,salaryl);
+dbms_output.put_line(' The salary of the employee is '||salaryl);
+     end;
+
+    ii)  create or replace function findsalaryf(empnol varchar2)return number as salary1 number (10);
+    		begin
+select salary into salaryfromemployeewhere empno=empno1;
+return (salaryl);
+     		end;
+
+set serveroutput on;
+declare
+empnol varchar2(8);
+salaryl varchar2(10);
+begin
+empnol:=&empnol;
+salaryl:=findsalaryf(empnol);
+dbms_output.put_line(' the salary of the employee is' ||salaryl);
+end;
